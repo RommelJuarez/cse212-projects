@@ -1,5 +1,15 @@
+using System.Runtime.CompilerServices;
+
 public static class Arrays
 {
+    public static void Run()
+    {
+        Console.WriteLine("\n======================\nArrays\n======================");
+        Console.WriteLine("MultiplesOf(7, 5) = {0}", string.Join(", ", MultiplesOf(7, 5)));
+
+        RotateListRight(new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1);
+
+    }
     /// <summary>
     /// This function will produce an array of size 'length' starting with 'number' followed by multiples of 'number'.  For 
     /// example, MultiplesOf(7, 5) will result in: {7, 14, 21, 28, 35}.  Assume that length is a positive
@@ -7,13 +17,17 @@ public static class Arrays
     /// </summary>
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
-    {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+    {   //define the array of doubles called result
+        var result = new double[length];
+        //loop n times to fill the array with multiples of the number
+        for (int i = 0; i < length; i++)
+        {
+            //multiply the number by the index and assign it to the array at that index
+            result[i] = number * (i + 1);
+        }
+        //return the array of doubles
+        return result;
 
-        return []; // replace this return statement with your own
     }
 
     /// <summary>
@@ -25,9 +39,22 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        int count = data.Count;  
+        
+        //ensure amount is within the bounds of the list size
+        amount = amount % count;
+
+        //copy the last 'amount' elements
+        List<int> temp = data.GetRange(count - amount, amount);
+
+        //remove the last 'amount' elements from the list
+        data.RemoveRange(count - amount, amount);
+
+        //insert the copied elements at the beginning of the list
+        data.InsertRange(0, temp);
+
+        
+        Console.WriteLine("Rotated List: {0}", string.Join(", ", data));
+
     }
 }

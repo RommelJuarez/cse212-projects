@@ -28,7 +28,7 @@ public static class Arrays
         //return the array of doubles
         return result;
 
-    }
+    }   
 
     /// <summary>
     /// Rotate the 'data' to the right by the 'amount'.  For example, if the data is 
@@ -55,6 +55,7 @@ public static class Arrays
 
         
         Console.WriteLine("Rotated List: {0}", string.Join(", ", data));
+        
 
     }
 }
